@@ -187,12 +187,16 @@ void Satellite::spawn1(SurveyDesign &sur, Sampler& imf,IsochroneDB &ic,double fS
 			//assuming they are all of the median stellar mass for the IMF
 			double nstars_float = (Part->Mass() / imf.meanx) * frac * sur.All->fSample;
 
-			//use stochastic rounding to determine the integer number of stars to include
-			int stars = int(nstars_float);
-			if (randomu.doub() <= (nstars_float - stars))
-				stars++;
+			// //use stochastic rounding to determine the integer number of stars to include
+			// int stars = int(nstars_float);
+			// if (randomu.doub() <= (nstars_float - stars))
+			// 	stars++;
+			
+			//use standard rounding to determine the integer number of stars to include, and adjust given ngen
+			double ngen_float = float(sur.All->ngen);
+			int stars = int(round((ngen_float+1)*nstars_float))-int(round(ngen_float*nstars_float));
 
-//			cout<<mmin<<" "<<mmax<<" "<<frac<<" "<<stars<<endl;
+//			cout<<Part->parentID()<<" "<<mmin<<" "<<mmax<<" "<<frac<<" "<<stars<<endl;
 
 			//if some stars will be included, set up the sampler to sample only this range of the IMF
 			if (stars > 0) {
@@ -450,7 +454,7 @@ void Satellite::readEbfFile(const string &fname, int sat_no)
 */
 	string s(fname);
 	if(hdim==3)
-		if(nres==32)
+		if(nres==32)  // TODO Note for self: this is the only place where nres is used... feels like its usage could be entirely discarded
 			s.insert(s.find(".ebf"),"_d3n32_den");
 		else if(nres==64)
 			s.insert(s.find(".ebf"),"_d3n64_den");
