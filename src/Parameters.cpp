@@ -1,12 +1,18 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Author: Sanjib Sharma                                                     *
+ * Modified by: Robyn E Sanderson (2018),                                    *
+ *              Adrien CR Thob (2022)                                        *
  * Copyright (c) 2012 Sanjib Sharma                                          *
+ * Copyright (c) 2018 Robyn E Sanderson                                      *
+ * Copyright (c) 2022 Adrien CR Thob                                         *
  * All rights reserved.                                                      *
  *                                                                           *
- * This file is part of Galaxia. The full Galaxia copyright notice, including*
- * terms governing use, modification, and redistribution, is contained in    *
- * the files COPYING and COPYRIGHT, which can be found at the root           *
- * of the source code distribution tree.                                     *
+ * This file is part of Galaxia-ananke.                                      *
+ * The original software was Galaxia.                                        *
+ *                                                                           *
+ * The full copyright notice, including terms governing use, modification,   *
+ * and redistribution, is contained in the files COPYING and COPYRIGHT,      *
+ * which can be found at the root of the source code distribution tree.      *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Parameters.h"
@@ -14,7 +20,7 @@
 
 string version()
 {
-	string s="0.7.1";
+	string s="1.0.1";
 	return s;
 }
 
@@ -99,24 +105,34 @@ Parameters::~Parameters()
 
 void Parameters::copyright()
 {
-	cout<<endl<<endl;
+	cout<<endl;
 	cout<<"--------------------------------------------------------"<<endl;
-	cout<<"Galaxia is a code for synthetic modelling of the Milky Way"<<endl;
-	cout<<"Coyright (c) 2012 by Sanjib Sharma"<<endl<<endl;
+	cout<<"Galaxia-ananke is a code for synthetic star surveys for py-galaxia-ananke**"<<endl;
+	cout<<"Copyright (c) 2012 by Sanjib Sharma"<<endl;
+	cout<<"Copyright (c) 2018 by Robyn E Sanderson"<<endl;
+	cout<<"Copyright (c) 2022 by Adrien CR Thob"<<endl;
+	cout<<endl;
 	cout<<"This program is free software: you can redistribute it and/or modify"<<endl;
 	cout<<"it under the terms of the GNU Affero General Public License as"<<endl;
 	cout<<"published by the Free Software Foundation, either version 3 of the"<<endl;
-	cout<<"License, or (at your option) any later version."<<endl<<endl;
-
+	cout<<"License, or (at your option) any later version."<<endl;
+	cout<<endl;
 	cout<<"This program is distributed in the hope that it will be useful,"<<endl;
 	cout<<"but WITHOUT ANY WARRANTY; without even the implied warranty of"<<endl;
 	cout<<"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"<<endl;
-	cout<<"GNU Affero General Public License for more details."<<endl<<endl;
-
+	cout<<"GNU Affero General Public License for more details."<<endl;
+	cout<<endl;
 	cout<<"You should have received a copy of the GNU Affero General Public License"<<endl;
-	cout<<"along with this program.  If not, see <http://www.gnu.org/licenses/>."<<endl;
+	cout<<"along with this program. If not, see <http://www.gnu.org/licenses/>."<<endl;
+	cout<<endl;
+	cout<<"**py-galaxia-ananke is available at https://github.com/athob/py-Galaxia-ananke."<<endl;
+	cout<<"  Galaxia-ananke builds upon Galaxia (https://ascl.net/1101.007), also if it"<<endl;
+	cout<<"  played a role in your research or software development, we kindly request"<<endl;
+	cout<<"  that you cite both projects following citation examples shown in these links:"<<endl;
+	cout<<"    https://ui.adsabs.harvard.edu/abs/2011ApJ...730....3S/exportcitation"<<endl;
+	cout<<"    https://ui.adsabs.harvard.edu/abs/2024JOSS....9.6234T/exportcitation"<<endl;
 	cout<<"--------------------------------------------------------"<<endl;
-	cout<<endl<<endl;
+	cout<<endl;
     exit(1);
 }
 
@@ -124,7 +140,7 @@ void Parameters::usage(void )
 {
 	cout<<endl;
 	cout<<"NAME:"<<endl;
-    cout<<"\t galaxia-"<<version()<<" -a code to generate a synthetic galaxy survey"<<endl;
+    cout<<"\t Galaxia-ananke-"<<version()<<" -a code to generate synthetic star surveys for py-galaxia-ananke"<<endl;
 	cout<<endl;
 	cout<<"USAGE:"<<endl;
     cout<<"\t galaxia\t -s parameterfile"<<endl;
@@ -143,7 +159,7 @@ void Parameters::usage(void )
 	cout<<"\t --copyright "<<"print the copyright and warranty"<<endl;
 	 //	cout<<"\t -a --add=radec      "<<"append catalog file with l,b,ra and dec in degrees"<<endl;
 	cout<<"CONTACT:"<<endl;
-    cout<<"Report bugs to <bugsanjib@gmail.com>."<<endl;
+    cout<<"Report bugs to <adrien.thob@gmail.com>."<<endl;
     exit(1);
 }
 
@@ -332,7 +348,7 @@ void Parameters::setFromArguments(int argc, char **argv)
 
 				if (strcmp(argv[i], "--version") == 0)
 				{
-					cout << "Version 0.2" << endl;
+					cout << "Version " << version() << endl;
 					exit(1);
 				}
 				else if (strcmp(argv[i], "--help") == 0)

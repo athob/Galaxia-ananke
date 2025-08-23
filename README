@@ -1,6 +1,8 @@
 --------------------------------------------------------------
-    Galaxia is a code for synthetic modelling of the Milky Way
-    Copyright (C) 2012  Sanjib Sharma, Joss Bland-Hawthorn
+    Galaxia-ananke is a code for synthetic star surveys for py-galaxia-ananke**
+    Copyright (C) 2012  Sanjib Sharma, Joss Bland Hawthorn
+    Copyright (c) 2018  Robyn E Sanderson
+    Copyright (c) 2022  Adrien CR Thob
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -13,11 +15,17 @@
     GNU Affero General Public License for more details.
 
     You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+    **py-galaxia-ananke is available at https://github.com/athob/py-Galaxia-ananke.
+      Galaxia-ananke builds upon Galaxia (https://ascl.net/1101.007), also if it
+      played a role in your research or software development, we kindly request
+      that you cite both projects following citation examples shown in these links:
+        https://ui.adsabs.harvard.edu/abs/2011ApJ...730....3S/exportcitation
+        https://ui.adsabs.harvard.edu/abs/2024JOSS....9.6234T/exportcitation
 --------------------------------------------------------------
 
-For installation and usage see the html guide 
+For installation and usage see the original html guide of Galaxia
 firefox GalaxiaData/docs/index.html
 
 The output data is in EBF file format.
@@ -39,7 +47,7 @@ cd GalaxiaData/nbody1
 tar -zxvf bj.tar.gz 
 
 
-Presently for inquiries mail me at bug.sanjib at gmail .
+Presently for inquiries mail me at adrien.thob at gmail .
 Comments, criticism, bug report and feedback are most welcome. 
 
 --------------------------------------------------------------

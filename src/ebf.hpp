@@ -57,6 +57,25 @@ int TypeV(const T &x) {return TypeT<T>();}
 int TypeS(const std::string &typestring);
 
 
+/**
+ *
+ * @param filename1  name of file  e.g "check.ebf"
+ * @param dataname1  data tag name within the file e.g "/x"
+ * @return number of GetElements, if return value is zero it indicates error
+ * it could be non existent file, non existent item, or zero size data object
+ */
+// int64_t Ebf_GetElements(const std::string &filename1,const std::string &dataname1);
+
+//inline bool Ebf_ContainsKey(const std::string &filename1,const std::string &dataname1)
+//{
+//	int ecode=0;
+//	int64_t loc=ebfc::EbfTable_Get(filename1.c_str(),dataname1.c_str(),&ecode);
+//	if(ecode!=0)
+//		throw std::logic_error("Ebf Error: while running EbfTable_Get()");
+//	return loc;
+//}
+
+// void Ebf_GetTagNames(const char* filename, std::vector<std::string> &tagnames,int *ecode);
 void Info(const std::string& filename1);
 
 typedef union
@@ -88,9 +107,10 @@ private:
 	ebfc::EbfHeader ebfh;
 	int mode,givenmode;
 	std::string filename;
-
+//	std::vector<char> tbuf;
 	EbfFileBuf tbuf1;
-
+//	std::vector<int64_t> patternData;
+//	int64_t ncur;
 public:
 	// main reading/writing functions
 	/**

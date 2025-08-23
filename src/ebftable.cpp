@@ -27,6 +27,26 @@ namespace ebfc{
 #include<ctype.h>
 #endif
 
+/*
+#ifdef __cplusplus
+#include <cstring>
+#include<cstdlib>
+#include <stdexcept>
+#include <iostream>
+#include <iomanip>
+#include <sstream>
+#include<cctype>
+#include "ebftable.h"
+namespace ebf_impl1{
+namespace ebfc{
+#else
+#include <string.h>
+#include<stdlib.h>
+#include<ctype.h>
+#include "ebftable.h"
+#endif
+*/
+
 int Ebf_Version(int i)
 {
 	int version[3]={0,0,0};
@@ -537,7 +557,23 @@ void EbfHeader_read(EbfHeader* ebfh, FILE* fp)
 	if (fread(tempc1, 12, 1, fp) == 1)
 	{
 		fseek(fp, -12, SEEK_CUR);
-			sig[0] = -118;
+		/*
+		//		if (strncmp("EBF>>>", tempc1, 6) == 0)
+		//		{
+		//			EbfHeader_readVer10(ebfh, fp);
+		//		}
+		//		else
+		//		{
+		//			if ((tempc1[8] == 1) && (tempc1[9] == 1))
+		//				EbfHeader_readVer11(ebfh, fp);
+		//			else
+		//			{
+		//				printf("%s \n","Ebf Error from EbfHeader::Read() unrecognized header version");
+		//				ebfh->ecode=313;
+		//			}
+		//		}
+		 */
+		sig[0] = -118;
 		sig[1] = 69;
 		sig[2] = 66;
 		sig[3] = 70;
@@ -557,6 +593,7 @@ void EbfHeader_read(EbfHeader* ebfh, FILE* fp)
 		}
 		else
 		{
+/*			if (strncmp("EBF>>>", tempc1, 6) == 0) */
 			if (strncmp("EBF", tempc1, 3) == 0)
 				EbfHeader_readVer10(ebfh, fp);
 			else
