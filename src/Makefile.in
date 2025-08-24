@@ -99,13 +99,15 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_galaxia_OBJECTS = Galaxia.$(OBJEXT) Isochrone.$(OBJEXT) \
-	Satellite.$(OBJEXT) TableInterpolator.$(OBJEXT) Cot.$(OBJEXT) \
-	Geometry.$(OBJEXT) IsochroneDB.$(OBJEXT) Timer.$(OBJEXT) \
-	ebf.$(OBJEXT) GInterpolator.$(OBJEXT) Parameters.$(OBJEXT) \
-	SurveyDesign.$(OBJEXT) ebftable.$(OBJEXT) Interp.$(OBJEXT) \
-	Population.$(OBJEXT) SurveyError.$(OBJEXT) Functions.$(OBJEXT) \
-	IsochroneBase.$(OBJEXT) Sampler.$(OBJEXT) sutils.$(OBJEXT)
+am_galaxia_OBJECTS = BHTree.$(OBJEXT) Galaxia.$(OBJEXT) \
+	Isochrone.$(OBJEXT) Satellite.$(OBJEXT) \
+	TableInterpolator.$(OBJEXT) Cot.$(OBJEXT) Geometry.$(OBJEXT) \
+	IsochroneDB.$(OBJEXT) StellarPopulation.$(OBJEXT) \
+	Timer.$(OBJEXT) ebf.$(OBJEXT) GInterpolator.$(OBJEXT) \
+	Parameters.$(OBJEXT) SurveyDesign.$(OBJEXT) ebftable.$(OBJEXT) \
+	Interp.$(OBJEXT) Population.$(OBJEXT) SurveyError.$(OBJEXT) \
+	Functions.$(OBJEXT) IsochroneBase.$(OBJEXT) Sampler.$(OBJEXT) \
+	sutils.$(OBJEXT)
 galaxia_OBJECTS = $(am_galaxia_OBJECTS)
 galaxia_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -123,13 +125,14 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/build-aux/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/Cot.Po ./$(DEPDIR)/Functions.Po \
-	./$(DEPDIR)/GInterpolator.Po ./$(DEPDIR)/Galaxia.Po \
-	./$(DEPDIR)/Geometry.Po ./$(DEPDIR)/Interp.Po \
-	./$(DEPDIR)/Isochrone.Po ./$(DEPDIR)/IsochroneBase.Po \
-	./$(DEPDIR)/IsochroneDB.Po ./$(DEPDIR)/Parameters.Po \
-	./$(DEPDIR)/Population.Po ./$(DEPDIR)/Sampler.Po \
-	./$(DEPDIR)/Satellite.Po ./$(DEPDIR)/SurveyDesign.Po \
+am__depfiles_remade = ./$(DEPDIR)/BHTree.Po ./$(DEPDIR)/Cot.Po \
+	./$(DEPDIR)/Functions.Po ./$(DEPDIR)/GInterpolator.Po \
+	./$(DEPDIR)/Galaxia.Po ./$(DEPDIR)/Geometry.Po \
+	./$(DEPDIR)/Interp.Po ./$(DEPDIR)/Isochrone.Po \
+	./$(DEPDIR)/IsochroneBase.Po ./$(DEPDIR)/IsochroneDB.Po \
+	./$(DEPDIR)/Parameters.Po ./$(DEPDIR)/Population.Po \
+	./$(DEPDIR)/Sampler.Po ./$(DEPDIR)/Satellite.Po \
+	./$(DEPDIR)/StellarPopulation.Po ./$(DEPDIR)/SurveyDesign.Po \
 	./$(DEPDIR)/SurveyError.Po ./$(DEPDIR)/TableInterpolator.Po \
 	./$(DEPDIR)/Timer.Po ./$(DEPDIR)/ebf.Po \
 	./$(DEPDIR)/ebftable.Po ./$(DEPDIR)/sutils.Po
@@ -275,15 +278,15 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-galaxia_SOURCES = Galaxia.cpp        Isochrone.cpp \
+galaxia_SOURCES = BHTree.cpp     Galaxia.cpp        Isochrone.cpp \
 Satellite.cpp          TableInterpolator.cpp Cot.cpp Geometry.cpp \
-IsochroneDB.cpp  Timer.cpp \
+IsochroneDB.cpp  StellarPopulation.cpp  Timer.cpp \
 ebf.cpp        GInterpolator.cpp  Parameters.cpp   SurveyDesign.cpp \
 ebftable.cpp   Interp.cpp         Population.cpp   SurveyError.cpp \
 Functions.cpp  IsochroneBase.cpp  Sampler.cpp      sutils.cpp \
-         Geometry.h       IsochroneDB.h  Population.h  \
+BHTree.h               Geometry.h       IsochroneDB.h  Population.h  \
 StarParticle.h       sutils.h CompatibilityChecks.h  GInterpolator.h \
-Isochrone.h    Sampler.h    TableInterpolator.h \
+Isochrone.h    Sampler.h     StellarPopulation.h  TableInterpolator.h \
 Cot.h                  Interp.h         Matrix.h       Satellite.h \
 SurveyDesign.h       Timer.h Functions.h            IsochroneBase.h \
 Parameters.h   SurveyError.h ebf.hpp  \
@@ -376,6 +379,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/BHTree.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Cot.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Functions.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GInterpolator.Po@am__quote@ # am--include-marker
@@ -389,6 +393,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Population.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Sampler.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Satellite.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/StellarPopulation.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SurveyDesign.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SurveyError.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TableInterpolator.Po@am__quote@ # am--include-marker
@@ -543,7 +548,8 @@ clean: clean-am
 clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
-		-rm -f ./$(DEPDIR)/Cot.Po
+		-rm -f ./$(DEPDIR)/BHTree.Po
+	-rm -f ./$(DEPDIR)/Cot.Po
 	-rm -f ./$(DEPDIR)/Functions.Po
 	-rm -f ./$(DEPDIR)/GInterpolator.Po
 	-rm -f ./$(DEPDIR)/Galaxia.Po
@@ -556,6 +562,7 @@ distclean: distclean-am
 	-rm -f ./$(DEPDIR)/Population.Po
 	-rm -f ./$(DEPDIR)/Sampler.Po
 	-rm -f ./$(DEPDIR)/Satellite.Po
+	-rm -f ./$(DEPDIR)/StellarPopulation.Po
 	-rm -f ./$(DEPDIR)/SurveyDesign.Po
 	-rm -f ./$(DEPDIR)/SurveyError.Po
 	-rm -f ./$(DEPDIR)/TableInterpolator.Po
@@ -608,7 +615,8 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f ./$(DEPDIR)/Cot.Po
+		-rm -f ./$(DEPDIR)/BHTree.Po
+	-rm -f ./$(DEPDIR)/Cot.Po
 	-rm -f ./$(DEPDIR)/Functions.Po
 	-rm -f ./$(DEPDIR)/GInterpolator.Po
 	-rm -f ./$(DEPDIR)/Galaxia.Po
@@ -621,6 +629,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ./$(DEPDIR)/Population.Po
 	-rm -f ./$(DEPDIR)/Sampler.Po
 	-rm -f ./$(DEPDIR)/Satellite.Po
+	-rm -f ./$(DEPDIR)/StellarPopulation.Po
 	-rm -f ./$(DEPDIR)/SurveyDesign.Po
 	-rm -f ./$(DEPDIR)/SurveyError.Po
 	-rm -f ./$(DEPDIR)/TableInterpolator.Po
