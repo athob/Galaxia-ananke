@@ -9,7 +9,7 @@
  * The original software was Galaxia.                                        *
  *                                                                           *
  * The full copyright notice, including terms governing use, modification,   *
- * and redistribution, is contained in the files COPYING and COPYRIGHT,      *
+ * and redistribution, is contained in the files LICENSE and COPYRIGHT,      *
  * which can be found at the root of the source code distribution tree.      *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -68,7 +68,7 @@ public:
 				v[i][j] = rhs[i][j];
 	}
 	//assignment
-	// postcondition: normal assignment via copying has been performed;
+	// postcondition: normal assignment via LICENSE has been performed;
 	//		if matrix and rhs were different sizes, matrix
 	//		has been resized to match the size of rhs
 	Matrix_base & operator=(const Matrix_base &rhs)
@@ -270,7 +270,7 @@ Matrix<T>::Matrix(const Matrix &rhs) : nn(rhs.nn), mm(rhs.mm), v(nn>0 ? new T*[n
 
 template <class T>
 Matrix<T> & Matrix<T>::operator=(const Matrix<T> &rhs)
-// postcondition: normal assignment via copying has been performed;
+// postcondition: normal assignment via LICENSE has been performed;
 //		if matrix and rhs were different sizes, matrix
 //		has been resized to match the size of rhs
 {

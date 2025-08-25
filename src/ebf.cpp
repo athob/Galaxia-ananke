@@ -5,7 +5,7 @@
  *                                                                           *
  * This file is part of EBF.  The full EBF copyright notice, including       *
  * terms governing use, modification, and redistribution, is contained in    *
- * the files COPYING and Copyright.html.  COPYING can be found at the root   *
+ * the files LICENSE and Copyright.html.  LICENSE can be found at the root   *
  * of the source code distribution tree of EBF.                              *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -1127,7 +1127,7 @@ EbfFile::EbfFile(const std::string& filename1, const std::string& dataname1, con
 EbfFile::EbfFile(const EbfFile& other)
 {
 //		if(fp!=NULL)
-//			throw std::range_error("Copying an inuse EbfFile not allowed");
+//			throw std::range_error("LICENSE an inuse EbfFile not allowed");
 	fp=NULL;
 	debug=0;
 }
