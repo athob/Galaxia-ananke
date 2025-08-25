@@ -268,7 +268,10 @@ private:
 					size_ *= efile.dim(i);
 				}
 			}
-			loadNext(0);
+			if (size_ != 0)  // catch case where vector is empty before running loadNext
+			{
+				loadNext(0);
+			}
 //			if(efile.rank()==1)
 //				dims_.push_back(1);
 		}
