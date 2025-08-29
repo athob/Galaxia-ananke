@@ -1,12 +1,17 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Author: Sanjib Sharma                                                     *
+ * Modified by: Adrien CR Thob (2022)                                        *
  * Copyright (c) 2012 Sanjib Sharma                                          *
+ * Copyright (c) 2018 Robyn E Sanderson                                      *
+ * Copyright (c) 2022 Adrien CR Thob                                         *
  * All rights reserved.                                                      *
  *                                                                           *
- * This file is part of EBF.  The full EBF copyright notice, including       *
- * terms governing use, modification, and redistribution, is contained in    *
- * the files LICENSE and Copyright.html.  LICENSE can be found at the root   *
- * of the source code distribution tree of EBF.                              *
+ * This file is part of Galaxia-ananke.                                      *
+ * The original software was EBF.                                            *
+ *                                                                           *
+ * The full copyright notice, including terms governing use, modification,   *
+ * and redistribution, is contained in the files LICENSE and COPYRIGHT,      *
+ * which can be found at the root of the source code distribution tree.      *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #ifndef EBFVECTOR_HPP_
