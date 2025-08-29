@@ -210,9 +210,12 @@ void append1(const string& filename,IsochroneDB& ic,const string& photodir,const
 	//	for(size_t i=0;i<isofile_info.magnames.size();++i)
 	//		cout<<i<<" "<<isofile_info.magnames[i]<<endl;
 
-		//check that there are stars in the file
-		if(age.size()>0) {
+		// //check that there are stars in the file
+		// if(age.size()>0) {
 
+		if(age.size()==0) {
+			cout<<"Warning: survey contains no stars, proceeding with appending empty photometry columns"<<endl;
+		}
 
 		// initialize fbvectors
 		cout<<"initializing isochrone data"<<endl;
@@ -284,9 +287,9 @@ void append1(const string& filename,IsochroneDB& ic,const string& photodir,const
 			for(size_t k=0;k<isofile_info.magnames.size();++k)
 				mags[k].Remove();
 		}
-	} else {
-		cout<<"Error: survey contains no stars"<<endl;
-	}
+	// } else {
+	// 	cout<<"Error: survey contains no stars"<<endl;
+	// }
 
 
 }
