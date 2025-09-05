@@ -141,6 +141,7 @@ void Parameters::usage(void )
 	cout<<endl;
 	cout<<"NAME:"<<endl;
     cout<<"\t Galaxia-ananke-"<<version()<<" -a code to generate synthetic star surveys for py-galaxia-ananke"<<endl;
+	cout<<"\t See https://github.com/athob/Galaxia-ananke for details."<<endl;
 	cout<<endl;
 	cout<<"USAGE:"<<endl;
     cout<<"\t galaxia\t -s parameterfile"<<endl;
