@@ -3,7 +3,6 @@
  * Copyright (C) 2012  Sanjib Sharma                                         *
  * Copyright (C) 2018  Robyn E Sanderson                                     *
  * Copyright (C) 2022  Adrien CR Thob                                        *
- * All rights reserved.                                                      *
  *                                                                           *
  * This file is part of Galaxia-ananke:                                      *
  * <https://github.com/athob/Galaxia-ananke>.                                *

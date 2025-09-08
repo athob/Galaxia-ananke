@@ -3,7 +3,6 @@
  * Modified by: Adrien CR Thob (2022)                                        *
  * Copyright (C) 2018  Robyn E Sanderson                                     *
  * Copyright (C) 2022  Adrien CR Thob                                        *
- * All rights reserved.                                                      *
  *                                                                           *
  * This file is part of Galaxia-ananke:                                      *
  * <https://github.com/athob/Galaxia-ananke>.                                *
