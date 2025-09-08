@@ -2,9 +2,9 @@
  * Author: Sanjib Sharma                                                     *
  * Modified by: Robyn E Sanderson (2018),                                    *
  *              Adrien CR Thob (2022)                                        *
- * Copyright (c) 2012  Sanjib Sharma                                         *
- * Copyright (c) 2018  Robyn E Sanderson                                     *
- * Copyright (c) 2022  Adrien CR Thob                                        *
+ * Copyright (C) 2012  Sanjib Sharma                                         *
+ * Copyright (C) 2018  Robyn E Sanderson                                     *
+ * Copyright (C) 2022  Adrien CR Thob                                        *
  * All rights reserved.                                                      *
  *                                                                           *
  * This file is part of Galaxia-ananke:                                      *
@@ -13,7 +13,9 @@
  *                                                                           *
  * The full copyright notice, including terms governing use, modification,   *
  * and redistribution, is contained in the files LICENSE and COPYRIGHT,      *
- * which can be found at the root of the source code distribution tree.      *
+ * which can be found at the root of the source code distribution tree:      *
+ * - LICENSE: https://github.com/athob/Galaxia-ananke/blob/main/LICENSE      *
+ * - COPYRIGHT: https://github.com/athob/Galaxia-ananke/blob/main/COPYRIGHT  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "Parameters.h"
@@ -109,9 +111,9 @@ void Parameters::copyright()
 	cout<<endl;
 	cout<<"--------------------------------------------------------"<<endl;
 	cout<<"Galaxia-ananke is a code for synthetic star surveys for py-galaxia-ananke**"<<endl;
-	cout<<"Copyright (c) 2012 by Sanjib Sharma"<<endl;
-	cout<<"Copyright (c) 2018 by Robyn E Sanderson"<<endl;
-	cout<<"Copyright (c) 2022 by Adrien CR Thob"<<endl;
+	cout<<"Copyright (C) 2012 by Sanjib Sharma"<<endl;
+	cout<<"Copyright (C) 2018 by Robyn E Sanderson"<<endl;
+	cout<<"Copyright (C) 2022 by Adrien CR Thob"<<endl;
 	cout<<endl;
 	cout<<"This program is free software: you can redistribute it and/or modify"<<endl;
 	cout<<"it under the terms of the GNU Affero General Public License as"<<endl;
