@@ -5,9 +5,13 @@
  * Copyright (C) 2018  Robyn E Sanderson                                     *
  * Copyright (C) 2022  Adrien CR Thob                                        *
  *                                                                           *
- * This file is part of Galaxia-ananke:                                      *
- * <https://github.com/athob/Galaxia-ananke>.                                *
- * The original software was EBF.                                            *
+ * This file is part of the Galaxia-ananke project,                          *
+ * <https://github.com/athob/Galaxia-ananke>, which is licensed              *
+ * under the GNU Affero General Public License v3.0 (AGPL-3.0).              *
+ *                                                                           *
+ * This file was originally part of the EBF project,                         *
+ * and then in included into the Galaxia project,                            *
+ * from which the Galaxia-ananke project was forked.                         *
  *                                                                           *
  * The full copyright notice, including terms governing use, modification,   *
  * and redistribution, is contained in the files LICENSE and COPYRIGHT,      *
