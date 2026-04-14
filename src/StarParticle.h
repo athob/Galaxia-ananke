@@ -173,7 +173,7 @@ public:
 	}
 };
 
-class ParticleTag_eq: public unary_function<ParticleTag,bool>
+class ParticleTag_eq
 {
 	string s;
 	int status;
