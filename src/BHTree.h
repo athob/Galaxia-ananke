@@ -289,7 +289,7 @@ public:
 	}
 };
 
-class nodep_less_than: binary_function<BHNode*, BHNode*,bool>
+class nodep_less_than
 {
 public:
 	bool operator() (BHNode* const& N1,BHNode* const& N2) const {return N1->dmod < N2->dmod;}
