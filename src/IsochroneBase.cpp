@@ -232,8 +232,9 @@ int IsochroneBase:: readfile(const string& fname,double alpha1,double feH1,const
     const char* delimiters = " \t";
 	FILE* fd=NULL;
 	char buf_check[512];
-	vector<float> x(iso_fileinfo.fields,0.0);
-	certify(int(x.size())>=16,"number of fields greater than equal to 16");
+	// the row buffer holds at least the 16 values that the default format below reads, whatever the number of fields of the file:
+	// the readers that go through the fields of the descriptor (such as the one for the isochrones made in python) need no more than that
+	vector<float> x(std::max(iso_fileinfo.fields,16),0.0);
 	certify(int(iso_fileinfo.extraid.size())<=(iso_fileinfo.fields-iso_fileinfo.startid),"number of magnames greater than number of available fields");
 	Isochrone icData;
 	icData.age=-1.0;
