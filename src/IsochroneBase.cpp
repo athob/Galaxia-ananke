@@ -154,7 +154,7 @@ void IsochroneBase:: readIsochrones(const string& inputDir,const string& dirname
 	vector<double> fe(fe1,fe1+sizeof(fe1)/sizeof(fe1[0]));
 	for(size_t i=0;i<fe.size();++i)
 	{
-		if((dirname.compare("py_custom/")==0)||(photoSys.compare("WFIRST+LSST")==0)||(photoSys.compare("WFIRST")==0)||(photoSys.compare("WFIRST+HST__WFC3")==0)||(photoSys.compare("HST__WFC3")==0)||(photoSys.compare("GAIA__0")==0)||(photoSys.compare("GAIA__DR2")==0)||(photoSys.compare("CTIO__DECam")==0)||(photoSys.compare("LSST_DP0")==0)) {
+		if((dirname.compare("py_custom/")==0)||(photoSys.compare("WFIRST+LSST")==0)||(photoSys.compare("WFIRST")==0)||(photoSys.compare("WFIRST+HST__WFC3")==0)||(photoSys.compare("HST__WFC3")==0)||(photoSys.compare("GAIA__0")==0)||(photoSys.compare("GAIA__DR2")==0)||(photoSys.compare("CTIO__DECam")==0)||(photoSys.compare("LSST_DP0")==0)||(photoSys.compare("LSST")==0)||(photoSys.compare("Roman")==0)||(photoSys.compare("Euclid")==0)||(photoSys.find("JWST")!=string::npos)||(photoSys.compare("Pan_STARRS1")==0)) {
 			//cout<<"Using new Zsun";
 			FeH.push_back(log10(fe[i]/0.0152));
 		}
@@ -239,7 +239,7 @@ int IsochroneBase:: readfile(const string& fname,double alpha1,double feH1,const
 	Isochrone icData;
 	icData.age=-1.0;
 
-	if((iso_fileinfo.photoSysName.find("Python")!=string::npos)||(iso_fileinfo.photoSysName.compare("WFIRST+LSST")==0)||(iso_fileinfo.photoSysName.compare("WFIRST")==0)||(iso_fileinfo.photoSysName.compare("WFIRST+HST__WFC3")==0)||(iso_fileinfo.photoSysName.compare("HST__WFC3")==0)||(iso_fileinfo.photoSysName.compare("GAIA__0")==0)||(iso_fileinfo.photoSysName.compare("GAIA__DR2")==0)||(iso_fileinfo.photoSysName.compare("CTIO__DECam")==0)||(iso_fileinfo.photoSysName.compare("LSST_DP0")==0)) { 
+	if((iso_fileinfo.photoSysName.find("Python")!=string::npos)||(iso_fileinfo.photoSysName.compare("WFIRST+LSST")==0)||(iso_fileinfo.photoSysName.compare("WFIRST")==0)||(iso_fileinfo.photoSysName.compare("WFIRST+HST__WFC3")==0)||(iso_fileinfo.photoSysName.compare("HST__WFC3")==0)||(iso_fileinfo.photoSysName.compare("GAIA__0")==0)||(iso_fileinfo.photoSysName.compare("GAIA__DR2")==0)||(iso_fileinfo.photoSysName.compare("CTIO__DECam")==0)||(iso_fileinfo.photoSysName.compare("LSST_DP0")==0)||(iso_fileinfo.photoSysName.compare("LSST")==0)||(iso_fileinfo.photoSysName.compare("Roman")==0)||(iso_fileinfo.photoSysName.compare("Euclid")==0)||(iso_fileinfo.photoSysName.find("JWST")!=string::npos)||(iso_fileinfo.photoSysName.compare("Pan_STARRS1")==0)) {
 		//cout<<"Using new Zsun";
 		icData.FeH=log10(feH1/0.0152);
 	}
