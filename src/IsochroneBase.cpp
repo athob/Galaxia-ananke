@@ -25,6 +25,18 @@
 #include "TableInterpolator.h"
 #include "ebf.hpp"
 
+// Solar metallicity of the stellar models of the isochrones of a system, which sets the zero point of [M/H]=log(Z/Zsun) (see the input form of CMD):
+// 0.019 for Marigo et al. (2008) and previous tracks, which are the systems of CMD 2.1 and 2.2 (the only ones of the original Galaxia),
+// and 0.0152 for PARSEC (Bressan et al. 2012) and later tracks, which are all the other systems and the ones made in python
+static double solarMetallicity(const string& photoSys,bool madeInPython)
+{
+	if(madeInPython)
+		return 0.0152;
+	if((photoSys.compare("APO__SDSS")==0)||(photoSys.compare("DCMC")==0)||(photoSys.compare("Generic__Johnson_UBVRIJHK")==0)||(photoSys.compare("Generic__Stroemgren")==0))
+		return 0.019;
+	return 0.0152;
+}
+
 
 
 IsoFileDescriptor::IsoFileDescriptor(const string &fname,const string& photoSys,const string& magcolorNames)
@@ -154,12 +166,7 @@ void IsochroneBase:: readIsochrones(const string& inputDir,const string& dirname
 	vector<double> fe(fe1,fe1+sizeof(fe1)/sizeof(fe1[0]));
 	for(size_t i=0;i<fe.size();++i)
 	{
-		if((dirname.compare("py_custom/")==0)||(photoSys.compare("WFIRST+LSST")==0)||(photoSys.compare("WFIRST")==0)||(photoSys.compare("WFIRST+HST__WFC3")==0)||(photoSys.compare("HST__WFC3")==0)||(photoSys.compare("GAIA__0")==0)||(photoSys.compare("GAIA__DR2")==0)||(photoSys.compare("CTIO__DECam")==0)||(photoSys.compare("LSST_DP0")==0)||(photoSys.compare("LSST")==0)||(photoSys.compare("Roman")==0)||(photoSys.compare("Euclid")==0)||(photoSys.find("JWST")!=string::npos)||(photoSys.compare("Pan_STARRS1")==0)) {
-			//cout<<"Using new Zsun";
-			FeH.push_back(log10(fe[i]/0.0152));
-		}
-		else
-			FeH.push_back(log10(fe[i]/0.019)); //changes for PARSEC isochrones - then Zsun = 0.0152
+		FeH.push_back(log10(fe[i]/solarMetallicity(photoSys,dirname.compare("py_custom/")==0)));
 	}
 
 	Alpha.push_back(0.0);
@@ -239,12 +246,7 @@ int IsochroneBase:: readfile(const string& fname,double alpha1,double feH1,const
 	Isochrone icData;
 	icData.age=-1.0;
 
-	if((iso_fileinfo.photoSysName.find("Python")!=string::npos)||(iso_fileinfo.photoSysName.compare("WFIRST+LSST")==0)||(iso_fileinfo.photoSysName.compare("WFIRST")==0)||(iso_fileinfo.photoSysName.compare("WFIRST+HST__WFC3")==0)||(iso_fileinfo.photoSysName.compare("HST__WFC3")==0)||(iso_fileinfo.photoSysName.compare("GAIA__0")==0)||(iso_fileinfo.photoSysName.compare("GAIA__DR2")==0)||(iso_fileinfo.photoSysName.compare("CTIO__DECam")==0)||(iso_fileinfo.photoSysName.compare("LSST_DP0")==0)||(iso_fileinfo.photoSysName.compare("LSST")==0)||(iso_fileinfo.photoSysName.compare("Roman")==0)||(iso_fileinfo.photoSysName.compare("Euclid")==0)||(iso_fileinfo.photoSysName.find("JWST")!=string::npos)||(iso_fileinfo.photoSysName.compare("Pan_STARRS1")==0)) {
-		//cout<<"Using new Zsun";
-		icData.FeH=log10(feH1/0.0152);
-	}
-	else
-		icData.FeH=log10(feH1/0.019);  //changes for PARSEC isochrones - then Zsun = 0.0152
+	icData.FeH=log10(feH1/solarMetallicity(iso_fileinfo.photoSysName,iso_fileinfo.photoSysName.find("Python")!=string::npos));
 
 	icData.alpha=alpha1;
 	icData.addDwarfs(int(iso_fileinfo.extraid.size()),dwarfOn);
