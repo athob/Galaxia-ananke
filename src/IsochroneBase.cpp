@@ -325,7 +325,7 @@ int IsochroneBase:: readfile(const string& fname,double alpha1,double feH1,const
 				linage=0;
 				sscanf(buf,"%f%f%G%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%e%f%e%e%e%e%e%f%e%f%f%f%f%f%f%f",&x[0],&x[1],&x[2],&x[3],&x[4],&x[5],&x[6],&x[7],&x[8],&x[9],&x[10],&x[11],&x[12],&x[13],&x[14],&x[15],&x[16],&x[17],&x[18],&x[19],&x[20],&x[21],&x[22],&x[23],&x[24],&x[25],&x[26],&x[27],&x[28],&x[29],&x[30],&x[31],&x[32],&x[33]);
 			}
-			else if(iso_fileinfo.photoSysName.compare("HST__WFC3")==0){
+			else if((iso_fileinfo.photoSysName.compare("HST__WFC3")==0)||(iso_fileinfo.photoSysName.compare("Pan_STARRS1")==0)){
 				//cout<<"using HST__WFC3 Isochrones"<<endl;
 				iage=1;
 				linage=1;
@@ -392,7 +392,7 @@ int IsochroneBase:: readfile(const string& fname,double alpha1,double feH1,const
 				icv.back().Teff.push_back(x[7]);
 				icv.back().Grav.push_back(x[8]);
 			}
-			else if((iso_fileinfo.photoSysName.compare("WFIRST+HST__WFC3")==0)||(iso_fileinfo.photoSysName.compare("WFIRST")==0)||(iso_fileinfo.photoSysName.compare("HST__WFC3")==0)||(iso_fileinfo.photoSysName.compare("LSST")==0)||(iso_fileinfo.photoSysName.compare("GAIA__0")==0)||(iso_fileinfo.photoSysName.compare("GAIA__DR2")==0)) {
+			else if((iso_fileinfo.photoSysName.compare("WFIRST+HST__WFC3")==0)||(iso_fileinfo.photoSysName.compare("WFIRST")==0)||(iso_fileinfo.photoSysName.compare("HST__WFC3")==0)||(iso_fileinfo.photoSysName.compare("LSST")==0)||(iso_fileinfo.photoSysName.compare("GAIA__0")==0)||(iso_fileinfo.photoSysName.compare("GAIA__DR2")==0)||(iso_fileinfo.photoSysName.compare("Pan_STARRS1")==0)) {
 				icv.back().m.push_back(x[2]);
 				icv.back().Mact.push_back(x[3]);
 				icv.back().Lum.push_back(x[4]);
