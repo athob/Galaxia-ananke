@@ -1,1 +1,5 @@
-Pan_STARRS1       29 23 6 g  r  i  z  y  w
+Pan_STARRS1       34 28 6 g  r  i  z  y  w
+# Settings of the CMD form that the headers of the isochrone files do not list (CMD 3.9):
+# ninTPC (resolution of the thermal pulse cycles) = 10, the default
+# Bolometric corrections: YBC + new Vega (Chen et al. 2019 with the Vega SED of Bohlin et al. 2020, CALSPEC alpha_lyr_stis_010); the header only says YBC
+# Interstellar extinction: A_V = 0
