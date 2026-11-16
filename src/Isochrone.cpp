@@ -25,6 +25,17 @@
 #include "Isochrone.h"
 #include "Functions.h"
 
+// The isochrones of the CMD of version 3.0 and later end with a row that is not a star: a luminosity log of -9.999, the mass of the remnant as the current mass, and
+// magnitudes that are too faint for any survey. The initial mass of that row is negligibly above that of the last star in the files of 3.0, but a few percent above in
+// some isochrones of the files of 3.7 and 3.9. A star between the two is a remnant: interpolating it from a star and from that row gives it the luminosity of a
+// remnant and the magnitudes of a star.
+static const double LUM_NOT_A_STAR=-9.0;
+
+static bool inRemnantGap(const vector<double> &Lum,int i)
+{
+	return (Lum[i]>LUM_NOT_A_STAR)&&(Lum[i+1]<=LUM_NOT_A_STAR);
+}
+
 Isochrone::Isochrone()
 {
 }
@@ -109,6 +120,8 @@ void Isochrone:: interpolate(StarParticle &Star)
 	{
 		int i=locate(m,double(smass_t));
 		double temp=(smass_t-m[i])/(m[i+1]-m[i]);
+		if(inRemnantGap(Lum,i))
+			temp=1.0;	// a remnant: the values of the row that ends the isochrone
 		// Star.mag(0)=Mag0[i]+(Mag0[i+1]-Mag0[i])*temp;
 		// Star.mag(1)=Mag1[i]+(Mag1[i+1]-Mag1[i])*temp;
 		// Star.mag(2)=Mag2[i]+(Mag2[i+1]-Mag2[i])*temp;
@@ -154,6 +167,8 @@ void Isochrone::interpolateTGM(float smass,vector<double> &x)
 	{
 		int i=locate(m,double(smass));
 		double temp=(smass-m[i])/(m[i+1]-m[i]);
+		if(inRemnantGap(Lum,i))
+			temp=1.0;	// a remnant: the values of the row that ends the isochrone
 		x[0]=Lum[i]+(Lum[i+1]-Lum[i])*temp;
 		x[1]=Teff[i]+(Teff[i+1]-Teff[i])*temp;
 		x[2]=Grav[i]+(Grav[i+1]-Grav[i])*temp;
