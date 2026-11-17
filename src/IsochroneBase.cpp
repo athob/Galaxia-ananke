@@ -295,12 +295,6 @@ int IsochroneBase:: readfile(const string& fname,double alpha1,double feH1,const
                     k++;
                 }
 			}
-			else if(iso_fileinfo.photoSysName.compare("LSST")==0){
-				// not reached: LSST is read as the systems of CMD 3.6 and later, by the branch above (to remove with the other branches of CMD 3.0)
-				iage=1;
-				linage=1;
-				sscanf(buf,"%f%G%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f",&x[0],&x[1],&x[2],&x[3],&x[4],&x[5],&x[6],&x[7],&x[8],&x[9],&x[10],&x[11],&x[12],&x[13],&x[14],&x[15],&x[16],&x[17],&x[18],&x[19],&x[20],&x[21],&x[22],&x[23],&x[24],&x[25],&x[26],&x[27],&x[28]);
-			}
 			else if(iso_fileinfo.photoSysName.compare("CTIO__DECam")==0){
 				//cout<<"using DECAM Isochrones"<<endl;
 				iage=2;
@@ -313,32 +307,13 @@ int IsochroneBase:: readfile(const string& fname,double alpha1,double feH1,const
 				linage=0;
 				sscanf(buf,"%f%f%G%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%e%f%e%e%e%e%e%f%e%f%f%f%f%f%f%f",&x[0],&x[1],&x[2],&x[3],&x[4],&x[5],&x[6],&x[7],&x[8],&x[9],&x[10],&x[11],&x[12],&x[13],&x[14],&x[15],&x[16],&x[17],&x[18],&x[19],&x[20],&x[21],&x[22],&x[23],&x[24],&x[25],&x[26],&x[27],&x[28],&x[29],&x[30],&x[31],&x[32],&x[33]);
 			}
-			else if(iso_fileinfo.photoSysName.compare("HST__WFC3")==0){
-				// not reached: HST__WFC3 is read as the systems of CMD 3.6 and later, by the branch above (to remove with the other branches of CMD 3.0)
-				iage=1;
-				linage=1;
-                k = 0;
-                token = strtok(buf,delimiters);
-                while(k<iso_fileinfo.fields)
-                {
-                    sscanf(token,"%f", &x[k]);
-                    token = strtok(NULL,delimiters);
-                    k++;
-                } // TODO testing here if new implementation works well and can be generalized
-				// sscanf(buf,"%f%G%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f",&x[0],&x[1],&x[2],&x[3],&x[4],&x[5],&x[6],&x[7],&x[8],&x[9],&x[10],&x[11],&x[12],&x[13],&x[14],&x[15],&x[16],&x[17],&x[18],&x[19],&x[20],&x[21],&x[22],&x[23],&x[24],&x[25]);
-			}
 			else if(iso_fileinfo.photoSysName.compare("GAIA__0")==0){
 				//cout<<"using Gaia Isochrones"<<endl;
 				iage=1;
 				linage=1;
 				sscanf(buf,"%f%G%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f",&x[0],&x[1],&x[2],&x[3],&x[4],&x[5],&x[6],&x[7],&x[8],&x[9],&x[10],&x[11],&x[12],&x[13],&x[14],&x[15],&x[16],&x[17],&x[18],&x[19],&x[20],&x[21],&x[22],&x[23],&x[24],&x[25]);
 			}
-			else if(iso_fileinfo.photoSysName.compare("GAIA__DR2")==0){
-				// not reached: GAIA__DR2 is read as the systems of CMD 3.6 and later, by the branch above (to remove with the other branches of CMD 3.0)
-				iage=1;
-				linage=1;
-				sscanf(buf,"%f%G%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f",&x[0],&x[1],&x[2],&x[3],&x[4],&x[5],&x[6],&x[7],&x[8],&x[9],&x[10],&x[11],&x[12],&x[13],&x[14],&x[15],&x[16],&x[17],&x[18],&x[19],&x[20],&x[21],&x[22],&x[23],&x[24],&x[25]);
-			} else{
+			else{
 				iage=0;
 				linage=0;
 				sscanf(buf,"%G%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f",&x[0],&x[1],&x[2],&x[3],&x[4],&x[5],&x[6],&x[7],&x[8],&x[9],&x[10],&x[11],&x[12],&x[13],&x[14],&x[15]);
