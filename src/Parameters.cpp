@@ -23,9 +23,17 @@
 #include "Parameters.h"
 #include "CompatibilityChecks.h"
 
+// The version is that of the git repository that the sources are the work tree of, from its tags as versioneer does it for a
+// Python package: build-aux/git-version.sh says it when the sources are compiled (see AM_CPPFLAGS in Makefile.am)
+#ifndef GALAXIA_GIT_VERSION
+#define GALAXIA_GIT_VERSION "unknown"
+#endif
+
 string version()
 {
-	string s="1.0.1";
+	string s=GALAXIA_GIT_VERSION;
+	if(s.empty())
+		s="unknown";
 	return s;
 }
 

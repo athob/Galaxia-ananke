@@ -12,4 +12,4 @@ Cot.h                  Interp.h         Matrix.h       Satellite.h \
 SurveyDesign.h       Timer.h Functions.h            IsochroneBase.h \
 Parameters.h   SurveyError.h ebf.hpp  \
 ebftable.hpp  ebfvector.hpp
-AM_CPPFLAGS = -DCODEDATAPATH=\"$(datadir)/\"
+AM_CPPFLAGS = -DCODEDATAPATH=\"$(datadir)/\" -DGALAXIA_GIT_VERSION=\"`$(SHELL) $(top_srcdir)/build-aux/git-version.sh $(top_srcdir)`\"

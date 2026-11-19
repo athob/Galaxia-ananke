@@ -1,3 +1,3 @@
 SUBDIRS = src
 ACLOCAL_AMFLAGS = -I m4
-EXTRA_DIST=GalaxiaData COPYRIGHT
+EXTRA_DIST=GalaxiaData COPYRIGHT build-aux/git-version.sh
