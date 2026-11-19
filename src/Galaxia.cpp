@@ -28,6 +28,9 @@
 #include"SurveyDesign.h"
 #include "Population.h"
 #include "ebf.hpp"
+#include <dirent.h>
+#include <fstream>
+#include <sstream>
 
 double Chabrier_exp_imf1(double x)
 {
@@ -203,6 +206,49 @@ void append_radec(const string& filename,const string dir)
 }
 
 
+// The raw provenance of an isochrone system, as its files of the library state it: its descriptor, and the lines that
+// PARSEC wrote at the head of its first isochrone file (the lowest metallicity), the lines that start with #
+static string isochroneInfo(const string& photodir,const string& photosys)
+{
+	string dir=photodir+"/"+photosys;
+	string category=photodir;
+	while((category.size()>0)&&(category[category.size()-1]=='/'))
+		category.erase(category.size()-1);
+	category=category.substr(category.find_last_of('/')+1);
+	string first;
+	DIR* dp=opendir(dir.c_str());
+	if(dp!=NULL)
+	{
+		struct dirent* ep;
+		while((ep=readdir(dp))!=NULL)
+		{
+			string name=ep->d_name;
+			if((name.compare(0,7,"output_")==0)&&((first.size()==0)||(name<first)))
+				first=name;
+		}
+		closedir(dp);
+	}
+	stringstream sout;
+	string line;
+	sout<<"# <isochrone category=\""<<category<<"\" system=\""<<photosys<<"\">"<<endl;
+	sout<<"# <descriptor file=\"IsoFileDescriptor.txt\">"<<endl;
+	ifstream fd((dir+"/IsoFileDescriptor.txt").c_str());
+	while(getline(fd,line))
+		sout<<line<<endl;
+	sout<<"# </descriptor>"<<endl;
+	sout<<"# <header file=\""<<first<<"\">"<<endl;
+	if(first.size()>0)
+	{
+		ifstream fh((dir+"/"+first).c_str());
+		for(int n=0;(n<200)&&getline(fh,line)&&(line.size()>0)&&(line[0]=='#');++n)
+			sout<<line<<endl;
+	}
+	sout<<"# </header>"<<endl;
+	sout<<"# </isochrone>"<<endl;
+	return sout.str();
+}
+
+
 void append1(const string& filename,IsochroneDB& ic,const string& photodir,const string& photosys,const string&magcolorNames)
 {
 		ebf::EbfDataInfo dinfo;	
@@ -291,6 +337,13 @@ void append1(const string& filename,IsochroneDB& ic,const string& photodir,const
 			cout<<"Skipping"<<" "<<mags[0].getDataName()<<" ---- "<<mags[isofile_info.magnames.size()-1].getDataName()<<endl;
 			for(size_t k=0;k<isofile_info.magnames.size();++k)
 				mags[k].Remove();
+		}
+		// the isochrone system is documented in the file, as its library states it (once, like its magnitudes)
+		if(ebf::ContainsKey(filename,"/"+photosys+"_isochrone_info",dinfo)==0)
+		{
+			string info=isochroneInfo(photodir,photosys);
+			vector<char> buf(info.begin(),info.end());
+			ebf::Write(filename,"/"+photosys+"_isochrone_info",&buf[0],"a","",buf.size());
 		}
 	// } else {
 	// 	cout<<"Error: survey contains no stars"<<endl;
