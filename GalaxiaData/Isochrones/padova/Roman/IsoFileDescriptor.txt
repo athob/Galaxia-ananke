@@ -1,4 +1,5 @@
 Roman       36 28 8  F062  F087  F106  F129  F158  F184  F146  F213
+# Magnitude system: Vega
 # Settings of the CMD form that the headers of the isochrone files do not list (CMD 3.9):
 # ninTPC (resolution of the thermal pulse cycles) = 10, the default
 # Bolometric corrections: YBC + new Vega (Chen et al. 2019 with the Vega SED of Bohlin et al. 2020, CALSPEC alpha_lyr_stis_010); the header only says YBC

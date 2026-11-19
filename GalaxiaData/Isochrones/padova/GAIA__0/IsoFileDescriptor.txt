@@ -1,2 +1,2 @@
 GAIA__0      26 23 3 G Gbp Grp
-
+# Magnitude system: Vega

@@ -1,2 +1,2 @@
 Euclid       34 28 6  vis  Y  Blue  J  Red  H
-
+# Magnitude system: AB

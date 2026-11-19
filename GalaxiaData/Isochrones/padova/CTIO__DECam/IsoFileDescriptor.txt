@@ -1,1 +1,2 @@
 CTIO__DECam       34 28 6     u    g    r    i    z    Y
+# Magnitude system: AB
